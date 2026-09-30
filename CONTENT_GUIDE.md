@@ -40,6 +40,11 @@ Every content update should be consistent with this positioning. Nigel is not a 
 - Global experience is genuine, not aspirational
 - Osaka base is a strategic advantage for Asia Pacific work, not just a lifestyle choice
 
+### Specialism pages (/animatronics/, /show-control/, /exhibitions/)
+- One keyword cluster per page; keep each page about its topic and link to the others
+- Use only facts already established on the site — productions, technologies, credentials — and link to the homepage case studies rather than copying them
+- Keep title ≤ ~60 characters and meta description ≤ ~155, with the key term first
+
 ### Services
 - Lead with animatronics and show control (highest value, most differentiated)
 - AV network optimisation — not design, not architecture: optimisation and troubleshooting
@@ -51,7 +56,8 @@ Every content update should be consistent with this positioning. Nigel is not a 
 - Show the scale — concurrent venues, weekly moves, 10-hour days, 7 days a week
 - The translator framing should be implicit in every case study
 
-### Rates
+### Rates (on /rates/, not the homepage)
+- Deliberately hard to find: no nav link, noindex, not in the sitemap, and the FAQ says "quoted on request". Do not add figures back to the homepage, FAQ or structured data
 - USD only
 - Two tracks are deliberate — on-site contract is not the same as consulting
 - Rates are market-competitive for the US themed entertainment market
@@ -125,7 +131,12 @@ For SEO and content targeting, these companies should appear naturally in the si
 
 Keep these keyword clusters represented in body text naturally:
 
+Priority terms (per Nigel): animatronics (above all), immersive, exhibition, commissioning, operations management, PLC, media networking, PID control loops. Dante L3 is a low priority — keep it in credentials, not in titles or descriptions.
+
+Clusters map to pages: animatronics → /animatronics/, show control and network → /show-control/, exhibition → /exhibitions/.
+
 **Animatronics cluster:**
+animatronics, PID control loops, 
 animatronic commissioning technician, animatronic systems technician, animatronic show control, hydraulic animatronic systems, wireless animatronic control
 
 **Show control cluster:**
@@ -135,7 +146,7 @@ show control technician, Medialon show control, Alcorn McBride technician, Beckh
 travelling exhibition technical supervisor, exhibition technical supervisor, exhibition operations manager, immersive exhibition commissioning, themed entertainment technical consultant
 
 **Network cluster:**
-Dante network exhibition, Dante L3 certified, show control AV integration, AV network optimisation
+media networking, show control AV integration, AV network optimisation, Dante network exhibition (Dante L3 certified — low priority)
 
 **Show creation cluster:**
 show creation specialist, show creation from scratch, themed entertainment show build, immersive experience show creation
@@ -150,7 +161,7 @@ TAIT Navigator certified, Thinkwell themed entertainment, walking with dinosaurs
 
 ## What Requires Nigel's Approval Before Publishing
 
-- Any change to rates
+- Any change to rates, or adding rates back to a public page
 - Any change to contact details or email address
 - Adding or removing case studies
 - Any claim about a specific production or company relationship

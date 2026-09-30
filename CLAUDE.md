@@ -46,7 +46,14 @@ The site is a small static multi-page site: `index.html` (hub), `/animatronics/`
 | `#booking` | Contact | Intake form + contact details |
 | `#faq` | FAQ | Five Q&A accordion items |
 
-**Footer** contains copyright and nav links.
+**Footer** contains copyright, nav links and the quiet "Engagement structures" link to `/rates/`.
+
+**Specialism pages** (each with its own title, description, canonical and JSON-LD; content only from facts already on the site):
+- `/animatronics/` — animatronics, commissioning, hydraulic/servo, PID control loops
+- `/show-control/` — show control, PLC/SCADA, media networking
+- `/exhibitions/` — immersive/travelling exhibition supervision, operations management
+
+See SITE_ARCHITECTURE.md for the full structure.
 
 ---
 
@@ -99,6 +106,7 @@ Direct, specific, confident without being boastful. No fluff. No generic consult
 
 ### Never do
 - Change rates without explicit instruction from Nigel
+- Put rate figures on any public or indexed page, the FAQ or the JSON-LD (rates live only on the unlisted, noindex `/rates/` page; the FAQ says "quoted on request")
 - Remove or rewrite the FAQ section (it feeds structured data for AI search)
 - Change the og:image path (it must point to /og-image.png)
 - Add external JavaScript libraries or frameworks
@@ -114,15 +122,18 @@ The site has comprehensive SEO already implemented:
 **Meta tags:** title, description, keywords, author, robots, canonical  
 **Open Graph:** og:title, og:description, og:image (1200x630), og:url, og:locale  
 **Twitter Card:** summary_large_image  
-**Structured Data:** JSON-LD with Person, ProfessionalService, and FAQPage schemas  
+**Structured Data:** JSON-LD with Person, ProfessionalService, and FAQPage schemas on the homepage; Service + BreadcrumbList on each specialism page  
+**Length limits:** title ≤ ~60 chars, meta description ≤ ~155 — lead with the key term  
 **Geo targeting:** AU-NSW, Sydney  
+
+**Priority terms (per Nigel):** animatronics (above all), immersive, exhibition, commissioning, operations management, PLC, media networking, PID control loops. Dante L3 is low priority — keep it out of titles and descriptions.
 
 **Primary keyword clusters:**
 - Animatronic commissioning technician
 - Show control technician / show creation specialist
 - Travelling exhibition technical supervisor
 - Themed entertainment technical consultant
-- Dante network exhibition / Dante L3 certified
+- Media networking / Dante network exhibition (Dante L3 is low priority)
 - PLC SCADA show control
 - TAIT Navigator certified / Thinkwell themed entertainment
 - Exhibition operations manager
