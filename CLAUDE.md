@@ -35,7 +35,7 @@ Secondary targets:
 
 ## Site Architecture
 
-The site is a **single HTML file** (index.html) with all CSS and JavaScript inline. There is no build process, no framework, no package.json. Sections are identified by anchor IDs:
+The site is a small static multi-page site: `index.html` (hub), `/animatronics/`, `/show-control/`, `/exhibitions/` and an unlisted `/rates/` page, all sharing `/styles.css`. Homepage JavaScript stays inline. There is no build process, no framework, no package.json. Homepage sections are identified by anchor IDs (rates are no longer on the homepage — see `/rates/`, which is `noindex` and left out of the sitemap on purpose):
 
 | Anchor | Section | Purpose |
 |--------|---------|---------|
@@ -43,11 +43,17 @@ The site is a **single HTML file** (index.html) with all CSS and JavaScript inli
 | `#about` | Profile | About text, career timeline |
 | `#services` | Services | Six service cards |
 | `#cases` | Case Studies | Four case study cards |
-| `#rates` | Rates | Two-track rate structure |
 | `#booking` | Contact | Intake form + contact details |
 | `#faq` | FAQ | Five Q&A accordion items |
 
-**Footer** contains copyright and nav links.
+**Footer** contains copyright, nav links and the quiet "Engagement structures" link to `/rates/`.
+
+**Specialism pages** (each with its own title, description, canonical and JSON-LD; content only from facts already on the site):
+- `/animatronics/` — animatronics, commissioning, hydraulic/servo, PID control loops
+- `/show-control/` — show control, PLC/SCADA, media networking
+- `/exhibitions/` — immersive/travelling exhibition supervision, operations management
+
+See SITE_ARCHITECTURE.md for the full structure.
 
 ---
 
@@ -100,6 +106,7 @@ Direct, specific, confident without being boastful. No fluff. No generic consult
 
 ### Never do
 - Change rates without explicit instruction from Nigel
+- Put rate figures on any public or indexed page, the FAQ or the JSON-LD (rates live only on the unlisted, noindex `/rates/` page; the FAQ says "quoted on request")
 - Remove or rewrite the FAQ section (it feeds structured data for AI search)
 - Change the og:image path (it must point to /og-image.png)
 - Add external JavaScript libraries or frameworks
@@ -115,15 +122,18 @@ The site has comprehensive SEO already implemented:
 **Meta tags:** title, description, keywords, author, robots, canonical  
 **Open Graph:** og:title, og:description, og:image (1200x630), og:url, og:locale  
 **Twitter Card:** summary_large_image  
-**Structured Data:** JSON-LD with Person, ProfessionalService, and FAQPage schemas  
+**Structured Data:** JSON-LD with Person, ProfessionalService, and FAQPage schemas on the homepage; Service + BreadcrumbList on each specialism page  
+**Length limits:** title ≤ ~60 chars, meta description ≤ ~155 — lead with the key term  
 **Geo targeting:** AU-NSW, Sydney  
+
+**Priority terms (per Nigel):** animatronics (above all), immersive, exhibition, commissioning, operations management, PLC, media networking, PID control loops. Dante L3 is low priority — keep it out of titles and descriptions.
 
 **Primary keyword clusters:**
 - Animatronic commissioning technician
 - Show control technician / show creation specialist
 - Travelling exhibition technical supervisor
 - Themed entertainment technical consultant
-- Dante network exhibition / Dante L3 certified
+- Media networking / Dante network exhibition (Dante L3 is low priority)
 - PLC SCADA show control
 - TAIT Navigator certified / Thinkwell themed entertainment
 - Exhibition operations manager
@@ -157,10 +167,10 @@ All fees are in USD. Nigel receives via Charles Schwab (US account) or Qantas Bu
 ## Deployment
 
 See DEPLOYMENT.md for full instructions. Short version:
-1. Edit index.html locally
+1. Edit index.html, styles.css and the subpage folders locally
 2. Commit and push to GitHub
 3. Download index.html from GitHub
-4. Upload to public_html via Webcentral Enhance file manager
+4. Upload ALL changed files and folders (index.html, styles.css, animatronics/, show-control/, exhibitions/, rates/, sitemap.xml) to public_html via Webcentral Enhance file manager
 5. Verify at jaiproductions.com.au in incognito window
 
 ---

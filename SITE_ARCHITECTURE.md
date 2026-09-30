@@ -2,14 +2,36 @@
 
 ## Overview
 
-Single HTML file. All CSS, JavaScript, and content are inline. No build process. No dependencies except Google Fonts loaded from CDN.
+Static multi-page site. No build process. No dependencies except Google Fonts loaded from CDN. All pages share one stylesheet and link to each other with root-relative paths, so they must be served from the site root.
 
 ```
-index.html      — Everything. The entire site.
-og-image.png    — Social preview image (1200x630px, dark/amber branded)
-robots.txt      — Allows all crawlers, points to sitemap
-sitemap.xml     — Single URL entry for homepage
+index.html                — Homepage / hub. Homepage JavaScript is inline.
+styles.css                — Shared stylesheet (design tokens, all components)
+animatronics/index.html   — Specialism page: animatronic commissioning
+show-control/index.html   — Specialism page: show control, PLC, media networking
+exhibitions/index.html    — Specialism page: immersive exhibition operations
+rates/index.html          — Engagement structures (noindex, not in sitemap, linked quietly)
+og-image.png              — Social preview image (1200x630px, dark/amber branded)
+robots.txt                — Allows all crawlers, points to sitemap
+sitemap.xml               — Homepage + three specialism pages (rates excluded on purpose)
+archive/                  — Dated snapshots of previous versions
 ```
+
+## Why the specialism pages exist
+
+Each targets one keyword cluster so search engines see a page that is about that topic, rather than one page trying to cover everything:
+
+| Page | Primary terms |
+|------|---------------|
+| /animatronics/ | animatronics, animatronic commissioning, hydraulic and servo systems, PID control loops |
+| /show-control/ | show control, PLC, SCADA, Medialon, Alcorn McBride, Beckhoff, media networking |
+| /exhibitions/ | immersive exhibition, travelling exhibition, operations management, SOPs |
+
+Content on these pages is drawn from the homepage services and case studies; the case studies themselves live only on the homepage and are linked to, not copied.
+
+## Shared page pattern (specialism pages)
+
+Nav → breadcrumb + H1 + lead → "What I deliver" list → productions/track record → "Other specialisms" links → contact CTA → footer. Each page has its own title, meta description, canonical, Open Graph/Twitter tags and a JSON-LD `Service` + `BreadcrumbList` block. Page-specific CSS (`.page-hero`, `.page-section`, `.page-list`, `.spec-links`, `.crumbs`) lives at the end of styles.css.
 
 ---
 
@@ -17,7 +39,7 @@ sitemap.xml     — Single URL entry for homepage
 
 ### NAV (fixed, top)
 - Logo: JAI.PRODUCTIONS (links to #hero)
-- Links: Profile, Services, Case Studies, Rates, Contact
+- Links: Profile, Services, Animatronics, Show Control, Exhibitions, Case Studies, Contact (Rates is intentionally not in the nav)
 - CTA button: "Engage Now" (links to #booking)
 
 ### #hero
@@ -45,7 +67,7 @@ sitemap.xml     — Single URL entry for homepage
 ### #services — Services
 - Section tag + H2: "What I / deliver"
 - Intro paragraph (right column)
-- 6 service cards in 3-column grid:
+- 6 service cards in 3-column grid (below them, a row of three links to the specialism pages):
   1. Animatronic Show Control & Commissioning
   2. AV Network Optimisation & Troubleshooting
   3. Exhibition Technical Supervision & Operations Management
@@ -62,41 +84,35 @@ sitemap.xml     — Single URL entry for homepage
   3. Metaverse of Magic (2023–2024)
   4. Titanique (2024–2025)
 
-### #rates — Rates
-- Section tag + H2: "Engagement / structures"
-- Intro paragraph
-- Track header bar (Track 01 / Track 02)
-- 4-column rate grid:
-  - Track 01: Technical Supervisor ($4,500–$5,500/wk) + All-Rounder ($550–$750/day)
-  - Divider
-  - Track 02: Remote Advisory ($100–$150/hr) + Fixed Scope ($1,200–$2,500)
+### Rates (moved to /rates/)
+Rates are no longer a homepage section. They live on `/rates/` (`noindex, follow`, excluded from sitemap.xml), reached only through the small "Engagement structures" footer link and the "Looking for fees?" line in the contact section. Layout is unchanged: Track 01 On-Site (Technical Supervisor, All-Rounder) and Track 02 Remote (Remote Advisory, Fixed Scope). The FAQ says fees are "quoted on request" and does not list figures.
 
 ### #booking — Contact
 - Section tag + H2: "Start an / engagement"
-- Left column: intro text, based/available info, email/LinkedIn/response
+- Left column: intro text, "Looking for fees?" link to /rates/, based/available info, email/LinkedIn/response
 - Right column: intake form
   - Fields: name, company, email, engagement type (dropdown), brief description
   - Submit: opens mailto: with pre-filled content
   - Note: "All enquiries treated in confidence. SOW provided before any work commences."
 
 ### #faq — Common Questions
-- 5 accordion items (HTML details/summary):
+- 5 accordion items (also mirrored in the FAQPage JSON-LD on the homepage):
   1. What animatronic systems do you have experience with?
   2. Are you available for work in Japan, Singapore, or the USA?
-  3. What is the difference between on-site contract roles and remote consulting?
+  3. What is the difference between on-site contract roles and remote consulting? (fees "quoted on request")
   4. What themed entertainment companies have you worked with?
   5. Do you hold Dante audio networking certification?
 
 ### Footer
 - Logo: JAI.PRODUCTIONS
-- Nav links: Profile, Services, Case Studies, Contact
+- Nav links: Profile, Services, Case Studies, Contact, Engagement structures (/rates/)
 - Copyright: © 2025 JAI Productions · ABN registered · Sydney / Osaka
 
 ---
 
 ## CSS Architecture
 
-All styles are in a single `<style>` block in `<head>`. Organised as:
+All styles are in `/styles.css`, loaded by every page with `<link rel="stylesheet" href="/styles.css">`. Organised as:
 
 ```
 :root              CSS variables / design tokens
@@ -115,22 +131,25 @@ nav                Fixed navigation
 #cases             Case studies section
 .case-card         Individual case study card
 .case-outcome      Outcome highlight box
-#rates             Rates section
+#rates             Rates section (used on /rates/)
 .rate-card         Individual rate card
 #booking           Contact section
 .booking-form      Intake form
 .contact-*         Contact info items
 footer             Footer
 .avail-badge       Green availability indicator
-.fade-up           Scroll animation class
+.fade-up           Scroll animation class (needs the homepage JS; not used on sub-pages)
 @media             Mobile breakpoints (max-width: 900px)
+.page-*, .crumbs,
+.spec-link(s),
+.quiet-link        Specialism-page and cross-link components (end of file)
 ```
 
 ---
 
 ## JavaScript
 
-Single inline `<script>` block at bottom of body. Two functions:
+Homepage only (`index.html`): a single inline `<script>` block at the bottom of body. Sub-pages contain no JavaScript. Two functions:
 
 **IntersectionObserver** — adds `.visible` class to `.fade-up` elements when they enter viewport, triggering CSS transition (opacity 0→1, translateY 24px→0).
 
@@ -140,19 +159,21 @@ Single inline `<script>` block at bottom of body. Two functions:
 
 ## Open Graph / SEO Head Structure
 
+Homepage (sub-pages follow the same pattern with their own values):
+
 ```html
-<title>Nigel Hodgson | Animatronic & Show Control Specialist | JAI Productions</title>
-<meta name="description" ...>
-<meta name="keywords" ...>        <!-- ~25 targeted keyword phrases -->
+<title>Animatronic Commissioning & Show Control | Nigel Hodgson</title>   <!-- ~60 chars max -->
+<meta name="description" ...>     <!-- ~155 chars max; lead with animatronics -->
+<meta name="keywords" ...>        <!-- ~24 phrases; ignored by Google, low value -->
 <meta name="author" ...>
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow">   <!-- /rates/ uses "noindex, follow" -->
 <link rel="canonical" href="https://jaiproductions.com.au/">
 
 <!-- Open Graph (Facebook/LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:url" ...>
 <meta property="og:title" ...>
-<meta property="og:description" ...>   <!-- Keep under 125 chars -->
+<meta property="og:description" ...>   <!-- Keep under 155 chars -->
 <meta property="og:image" content="https://jaiproductions.com.au/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -163,13 +184,15 @@ Single inline `<script>` block at bottom of body. Two functions:
 <!-- Geo -->
 <meta name="geo.region" content="AU-NSW">
 
-<!-- JSON-LD Structured Data -->
+<!-- JSON-LD Structured Data (homepage) -->
 <script type="application/ld+json">
-  <!-- Person schema -->
-  <!-- ProfessionalService schema -->
+  <!-- Person schema (includes credentials and knowsAbout) -->
+  <!-- ProfessionalService schema (serviceType list) -->
   <!-- FAQPage schema (mirrors FAQ section content) -->
 </script>
 ```
+
+Sub-pages carry a `Service` + `BreadcrumbList` JSON-LD block that points back to the homepage's `#jai-productions` organisation.
 
 **Critical:** The FAQPage schema must always match the actual FAQ section content. If you update FAQ questions/answers, update the JSON-LD block too.
 
@@ -182,6 +205,7 @@ Single inline `<script>` block at bottom of body. Two functions:
 - About grid: single column
 - Services grid: single column
 - Case grid: single column
-- Rates grid: 2-column (1fr 1fr)
+- Specialism links row: single column
+- Rates grid (on /rates/): 2-column (1fr 1fr)
 - Booking grid: single column
 - Footer: column layout, centered
