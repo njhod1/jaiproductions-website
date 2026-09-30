@@ -35,7 +35,7 @@ Secondary targets:
 
 ## Site Architecture
 
-The site is a **single HTML file** (index.html) with all CSS and JavaScript inline. There is no build process, no framework, no package.json. Sections are identified by anchor IDs:
+The site is a small static multi-page site: `index.html` (hub), `/animatronics/`, `/show-control/`, `/exhibitions/` and an unlisted `/rates/` page, all sharing `/styles.css`. Homepage JavaScript stays inline. There is no build process, no framework, no package.json. Homepage sections are identified by anchor IDs (rates are no longer on the homepage — see `/rates/`, which is `noindex` and left out of the sitemap on purpose):
 
 | Anchor | Section | Purpose |
 |--------|---------|---------|
@@ -43,7 +43,6 @@ The site is a **single HTML file** (index.html) with all CSS and JavaScript inli
 | `#about` | Profile | About text, career timeline |
 | `#services` | Services | Six service cards |
 | `#cases` | Case Studies | Four case study cards |
-| `#rates` | Rates | Two-track rate structure |
 | `#booking` | Contact | Intake form + contact details |
 | `#faq` | FAQ | Five Q&A accordion items |
 
@@ -157,10 +156,10 @@ All fees are in USD. Nigel receives via Charles Schwab (US account) or Qantas Bu
 ## Deployment
 
 See DEPLOYMENT.md for full instructions. Short version:
-1. Edit index.html locally
+1. Edit index.html, styles.css and the subpage folders locally
 2. Commit and push to GitHub
 3. Download index.html from GitHub
-4. Upload to public_html via Webcentral Enhance file manager
+4. Upload ALL changed files and folders (index.html, styles.css, animatronics/, show-control/, exhibitions/, rates/, sitemap.xml) to public_html via Webcentral Enhance file manager
 5. Verify at jaiproductions.com.au in incognito window
 
 ---
