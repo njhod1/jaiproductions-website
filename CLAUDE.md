@@ -108,6 +108,7 @@ Direct, specific, confident without being boastful. No fluff. No generic consult
 - Change rates without explicit instruction from Nigel
 - Put rate figures on any public or indexed page, the FAQ or the JSON-LD (rates live only on the unlisted, noindex `/rates/` page; the FAQ says "quoted on request")
 - Remove or rewrite the FAQ section (it feeds structured data for AI search)
+- Claim US work authorisation, US tax residency, W-9 or 1099 eligibility (see Work Eligibility)
 - Change the og:image path (it must point to /og-image.png)
 - Add external JavaScript libraries or frameworks
 - Add a backend or server-side code — this is a static site
@@ -190,7 +191,7 @@ See DEPLOYMENT.md for full instructions. Short version:
 
 - Australia: Full work rights
 - Japan: Spousal visa / Osaka base (Asia Pacific positioning advantage)
-- USA: SSN + postal address (1099 contractor eligible)
+- USA: No current US work authorisation or residency. Previously worked in the US on temporary work visas for several years, filed US tax returns, and holds a US SSN and US bank account; has never held a Green Card. Do NOT claim US work rights, US tax residency, W-9 or 1099 eligibility. Position as an overseas specialist contractor available for international engagements, including projects for US-based companies, with arrangements per project requirements, client contracting requirements and applicable work authorisation
 
 ---
 

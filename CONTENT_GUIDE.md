@@ -47,6 +47,7 @@ Every content update should be consistent with this positioning. Nigel is not a 
 
 ### Contact
 - Do not promise a fixed response time unless Nigel confirms it is sustainable (Nigel has confirmed response arrangements are agreed per job: "Urgent technical issues can be prioritised by arrangement" and "Response arrangements agreed according to urgency and availability")
+- Do not claim US work authorisation, US tax residency, W-9 or 1099 eligibility; US-based clients are welcome, with arrangements per project requirements, client contracting requirements and applicable work authorisation
 - Do not imply unrestricted work rights in any country or Japanese-language fluency beyond what the FAQ already states
 
 ### Services
