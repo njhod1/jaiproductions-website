@@ -45,9 +45,10 @@ Nav → breadcrumb + H1 + lead → "What I deliver" list → productions/track r
 ### #hero
 - Availability badge (green pulsing dot)
 - Hero tag: "Animatronic & Show Control Specialist"
+- Lead line: "Commissioning, operational readiness and technical training for complex attractions and live experiences."
 - H1: "The technical / problem / is solved."
 - Body paragraph: 35+ years positioning
-- Two CTAs: "Book a consultation" (#booking) + "See case studies" (#cases)
+- Two CTAs: "Discuss a project" (#booking) + "See case studies" (#cases)
 - Credential card (right column, hidden on mobile):
   - Stats: 35+ years, 40+ productions, 20+ countries, SYD/OSA base
   - Cert list: Dante L1/L2/L3, Q-SYS, IEEE/SMPTE/AES, AICD, PLC & SCADA, LF RA
@@ -67,18 +68,18 @@ Nav → breadcrumb + H1 + lead → "What I deliver" list → productions/track r
 ### #services — Services
 - Section tag + H2: "What I / deliver"
 - Intro paragraph (right column)
-- 6 service cards in 3-column grid (below them, a row of three links to the specialism pages):
-  1. Animatronic Show Control & Commissioning
-  2. AV Network Optimisation & Troubleshooting
-  3. Exhibition Technical Supervision & Operations Management
-  4. IT Infrastructure & Show Network Operations
-  5. Technical Documentation & Standards
-  6. Remote Diagnostic & Advisory
+- 4 outcome-led service groups in a 2-column grid (each: When you need it / What I provide / Expected outcome), anchored `#svc-commissioning`, `#svc-handover`, `#svc-training`, `#svc-remote`:
+  1. Commissioning & Technical Readiness
+  2. Operational Handover & Documentation
+  3. Staff Training & Knowledge Transfer
+  4. Remote Technical Support & Advisory
+- Scope note: technical and operational support only — not statutory certification, safety approval or engineering sign-off
+- Below the groups, a row of three links to the specialism pages
 
 ### #cases — Case Studies
 - Section tag + H2: "Problems solved. / Shows opened."
 - Introductory paragraph (translator framing)
-- 4 case study cards in 2-column grid:
+- 4 case study cards in 2-column grid, each structured as Project context / My role / Result / Capabilities, with links to the related service groups and the contact form:
   1. Jurassic World: The Exhibition (2019–2021)
   2. Walking With Dinosaurs (2007–2019)
   3. Metaverse of Magic (2023–2024)
@@ -89,9 +90,9 @@ Rates are no longer a homepage section. They live on `/rates/` (`noindex, follow
 
 ### #booking — Contact
 - Section tag + H2: "Start an / engagement"
-- Left column: intro text, "Looking for fees?" link to /rates/, based/available info, email/LinkedIn/response
+- Left column: intro text, list of what to include in an enquiry, "Looking for fees?" link to /rates/, based/available info, email/LinkedIn/response
 - Right column: intake form
-  - Fields: name, company, email, engagement type (dropdown), brief description
+  - Fields: name, company, email, project/attraction, location, timeframe, type of support (dropdown), message
   - Submit: opens mailto: with pre-filled content
   - Note: "All enquiries treated in confidence. SOW provided before any work commences."
 
@@ -200,7 +201,7 @@ Sub-pages carry a `Service` + `BreadcrumbList` JSON-LD block that points back to
 
 ## Mobile Behaviour (max-width: 900px)
 
-- Nav links hidden (hamburger not implemented — keep simple)
+- Nav links become a horizontally scrolling row under the logo (CSS only, no JavaScript)
 - Hero card hidden (single column)
 - About grid: single column
 - Services grid: single column
@@ -209,3 +210,9 @@ Sub-pages carry a `Service` + `BreadcrumbList` JSON-LD block that points back to
 - Rates grid (on /rates/): 2-column (1fr 1fr)
 - Booking grid: single column
 - Footer: column layout, centered
+
+---
+
+## Accessibility
+
+Every page has a "Skip to main content" link (visible on keyboard focus) and a visible amber focus outline on links, buttons, form fields and FAQ summaries. Each page has exactly one H1; service groups and case studies use H3 under their section H2.
