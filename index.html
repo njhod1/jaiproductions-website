@@ -304,7 +304,7 @@
           <dt>When you need it</dt>
           <dd>An animatronic, show control system or exhibition is being installed or tested and needs to reach reliable, repeatable operation.</dd>
           <dt>What I provide</dt>
-          <dd>Commissioning support and testing coordination within agreed scope, bench testing and pre-show verification, fault diagnosis and troubleshooting across automation, AV and IT, and readiness checks before opening. Experienced across Alcorn McBride, Medialon, Beckhoff, CANbus, DMX, MIDI and proprietary control architectures.</dd>
+          <dd>Commissioning support and testing coordination within agreed scope, bench testing and pre-show verification, fault diagnosis and troubleshooting across automation, AV and IT, and readiness checks before opening. Experienced across Alcorn McBride, Medialon, Beckhoff, CANbus, DMX, MIDI and proprietary control architectures. Remote and on-site diagnostics, optimisation and resolution for Dante audio networks, console integration, MADI and complex multi-protocol AV/IT environments, plus design, deployment and management of production IT and show networks (Windows Server, Active Directory, Cisco/Meraki switching, managed VLANs).</dd>
           <dt>Expected outcome</dt>
           <dd>Systems checked against the agreed scope before opening, and faults traced to a cause so the operating team knows where things stand.</dd>
         </dl>
@@ -317,6 +317,9 @@
           <span class="tag">SCADA</span>
           <span class="tag">DMX</span>
           <span class="tag">Dante L3</span>
+          <span class="tag">Q-SYS</span>
+          <span class="tag">Cisco</span>
+          <span class="tag">Meraki</span>
         </div>
       </div>
 
@@ -327,7 +330,7 @@
           <dt>When you need it</dt>
           <dd>The installation team is leaving or an exhibition is moving venue, and the operating team needs what it takes to run the system without them.</dd>
           <dt>What I provide</dt>
-          <dd>Operating and maintenance documentation, SOPs (preshow, show, shutdown, maintenance), network diagrams and commissioning checklists, plus coordination between the installation and technical teams and the teams who will operate the show.</dd>
+          <dd>Operating and maintenance documentation, SOPs (preshow, show, shutdown, maintenance), network diagrams and commissioning checklists, plus coordination between the installation and technical teams and the teams who will operate the show. Full technical supervision and operations management for travelling and permanent immersive exhibitions, from pre-build verification through opening and ongoing daily operations, including daily operational procedures, staff rostering and show-move logistics.</dd>
           <dt>Expected outcome</dt>
           <dd>Documented procedures and technical records the operating team can work from, and knowledge that stays with the project.</dd>
         </dl>
@@ -365,7 +368,7 @@
           <dt>When you need it</dt>
           <dd>A fault or design question needs an experienced second opinion and there is no need, or no time, for someone on site.</dd>
           <dt>What I provide</dt>
-          <dd>Remote diagnostics and technical advice, project and system architecture reviews, network audits, and ongoing support arrangements. Written session summary provided; urgent show-stopping issues are prioritised.</dd>
+          <dd>Remote diagnostics and technical advice, project and system architecture reviews, network audits, and ongoing support arrangements. Time-critical remote troubleshooting for show-stopping issues — console faults, network outages, control system failures and animatronic system problems — with same-day response for urgent engagements. Written session summary provided.</dd>
           <dt>Expected outcome</dt>
           <dd>A clear diagnosis or recommendation, in writing, that your team can act on.</dd>
         </dl>
@@ -697,7 +700,7 @@
     const email = document.getElementById('email').value.trim();
     const brief = document.getElementById('brief').value.trim();
     if (!name || !email || !brief) {
-      alert('Please fill in your name, email, and a brief description.');
+      alert('Please fill in your name, email, and a message.');
       return;
     }
     const subject = encodeURIComponent('JAI Productions — Consulting Enquiry');
@@ -709,7 +712,7 @@
       'Timeframe: ' + document.getElementById('timeframe').value + '\n' +
       'Email: ' + document.getElementById('email').value + '\n' +
       'Support required: ' + document.getElementById('type').value + '\n\n' +
-      'Brief:\n' + document.getElementById('brief').value
+      'Message:\n' + document.getElementById('brief').value
     );
     window.location.href = 'mailto:nigelh@jaiproductions.com.au?subject=' + subject + '&body=' + body;
   }
