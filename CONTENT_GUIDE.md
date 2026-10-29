@@ -45,6 +45,10 @@ Every content update should be consistent with this positioning. Nigel is not a 
 - Use only facts already established on the site — productions, technologies, credentials — and link to the homepage case studies rather than copying them
 - Keep title ≤ ~60 characters and meta description ≤ ~155, with the key term first
 
+### Contact
+- Do not promise a fixed response time unless Nigel confirms it is sustainable (the site currently says time-critical requests are prioritised)
+- Do not imply unrestricted work rights in any country or Japanese-language fluency beyond what the FAQ already states
+
 ### Services
 - Lead with animatronics and show control (highest value, most differentiated)
 - AV network optimisation — not design, not architecture: optimisation and troubleshooting
@@ -52,6 +56,7 @@ Every content update should be consistent with this positioning. Nigel is not a 
 - Remote consulting is a real product, not an afterthought
 
 ### Case Studies
+- Structure: Project context / My role / Result / Capabilities. Results are the existing documented outcomes — never add numbers, budgets or outcomes that are not documented
 - Focus on the problem and outcome, not just the technology list
 - Show the scale — concurrent venues, weekly moves, 10-hour days, 7 days a week
 - The translator framing should be implicit in every case study
